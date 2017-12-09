@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-ENV RC_VERSION 3.12
+ENV RC_VERSION 3.11
 
 RUN apt-get update && \
     apt-get install -y apt-utils debconf-utils python-software-properties software-properties-common && \
