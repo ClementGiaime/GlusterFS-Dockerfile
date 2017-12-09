@@ -8,6 +8,7 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y glusterfs-server && \
     mkdir /srv/gluster
+    
 
 RUN /etc/init.d/glusterfs-server start
 
