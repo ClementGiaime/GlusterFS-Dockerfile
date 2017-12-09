@@ -9,6 +9,10 @@ RUN apt-get update && \
     apt-get install -y glusterfs-server && \
     mkdir /srv/gluster
 
-RUN /etc/init.d/glusterfs-server start
+RUN glusterd
+
+COPY entrypoint.sh /
 
 EXPOSE 111 24007 24008 49152 49153
+
+ENTRYPOINT ["/entrypoint.sh"]

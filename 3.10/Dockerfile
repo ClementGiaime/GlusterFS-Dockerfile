@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-ENV RC_VERSION 3.10
+ENV RC_VERSION 3.11
 
 RUN apt-get update && \
     apt-get install -y apt-utils debconf-utils python-software-properties software-properties-common && \
@@ -9,6 +9,10 @@ RUN apt-get update && \
     apt-get install -y glusterfs-server && \
     mkdir /srv/gluster
 
-RUN /etc/init.d/glusterfs-server start
+RUN glusterd
 
-EXPOSE 111 24007 24008 49152 49153
+COPY entrypoint.sh /
+
+EXPOSE 111 111/udp 24007 24008 49152 49153 49154 49155 49156
+
+ENTRYPOINT ["/entrypoint.sh"]
